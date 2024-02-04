@@ -390,12 +390,15 @@ namespace Template
 				InitialVolume = 0.45f
 			};
 			var user = Context.User as IGuildUser;
+
+			//Something going wrong here
 			var result = await _audioService.Players
                     .RetrieveAsync(Context.Guild.Id,
                         user!.VoiceChannel.Id,
 					PlayerFactory.Vote,
 					Options.Create(options),
 					retrieveOptions);
+			//End of something wrong
 
 			if (!result.IsSuccess)
 			{
